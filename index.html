@@ -17,27 +17,45 @@
     var otherCredit = new Credit('cretitX', 'credit', 10, 12, 1000);
     var someCredit = new Credit ('cretitY', 'credit', 10, 12, 800);
 
-    var newDeposit = new Deposit('depositName', 'deposit', 6, 12, 1000);
+    var newDeposit = new Deposit('depositName', 'deposit', 6, 6, 1000);
+    var newDeposit1 = new Deposit('depositName1', 'deposit', 5, 6, 1200);
+    var newDeposit2 = new Deposit('depositName2', 'deposit', 10, 12, 1200);
+
 
     var Gosho = new Client('Goshko', 'Bulgaria', 1000, 1000);
-    var Pesho = new Client('Peshko', 'Bulgaria', 1500, 1000);
+    var Pesho = new Client('Peshko', 'Bulgaria', 1100, 1000);
     var Tosho = new Client('Toshko', 'Bulgaria', 2000, 1200);
 
     var UniCredit = new Bank ();
 
-    UniCredit.setClients([Gosho, Pesho, Tosho]);
-    UniCredit.setCredits([newCredit, otherCredit, someCredit]);
+    UniCredit.setClients(Gosho, Pesho, Tosho);
+    UniCredit.setCredits(newCredit, otherCredit, someCredit);
+    UniCredit.setDeposits(newDeposit, newDeposit1, newDeposit2);
+
+    UniCredit.createDeposit(Gosho, newDeposit);
+    UniCredit.createDeposit(Pesho, newDeposit1);
+    UniCredit.createDeposit(Tosho, newDeposit2);
 
     UniCredit.releaseCredit(Gosho, newCredit);
+    UniCredit.releaseCredit(Tosho, otherCredit);
+    UniCredit.releaseCredit(Tosho, someCredit);
 
     console.log(UniCredit.getClients());
     console.log(UniCredit.getBankAmount());
     console.log(Gosho.getCashAmount());
 
-    UniCredit.createDeposit(Pesho, newDeposit);
+
 
     console.log(UniCredit.getBankAmount());
     console.log(Pesho.getCashAmount());
+
+
+
+    console.log(UniCredit.getBankAmount());
+
+
+
+
 
 
 

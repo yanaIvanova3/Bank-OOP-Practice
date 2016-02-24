@@ -5,7 +5,7 @@ var Bank = (function () {
     function Bank (name, address) {
         var _name = name;
         var _address = address;
-        var bankAmount = 1000;
+        var bankAmount = 0;
         var clients = [];
         var credits = [];
         var deposits = [];
@@ -38,7 +38,7 @@ var Bank = (function () {
             return deposits;
         }
 
-        this.setDeposit = function (deposit) {
+        this.setDeposits = function (deposit) {
             deposits.push(deposit);
         }
 
@@ -66,14 +66,14 @@ var Bank = (function () {
     }
 
     Bank.prototype.createDeposit = function (client, deposit) {
-        this.setDeposit(deposit);
+        this.setDeposits(deposit);
         this.setBankAmount(deposit.getProductAmount());
         client.openDeposit(deposit);
         console.log('Congratulations on your deposit');
     }
 
     Bank.prototype.releaseCredit = function (client, credit) {
-        if (this.getBankAmount() > (this.getAllDepositsAmount()/10)) {
+        if (this.getBankAmount() > this.getAllDepositsAmount()/10) {
             this.setBankAmount(-(credit.getProductAmount()));
             this.setCredits(credit);
             client.getCredit(credit);

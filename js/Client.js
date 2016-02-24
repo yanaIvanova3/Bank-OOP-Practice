@@ -57,7 +57,7 @@ var Client = (function(){
 
 
     Client.prototype.openDeposit = function (deposit) {
-        if (this.getCashAmount() > 0) {
+        if (this.getCashAmount() > 0 && deposit.getProductAmount() <= this.getCashAmount()) {
             this.setDeposits(deposit);
             this.setCashAmount(-(deposit.getProductAmount()))
         } else {
