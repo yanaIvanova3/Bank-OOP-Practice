@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="js/Client.js"></script>
+<script type="text/javascript" src="js/Product.js"></script>
+<script type="text/javascript" src="js/Credit.js"></script>
+<script type="text/javascript" src="js/Deposit.js"></script>
+<script type="text/javascript" src="js/Bank.js"></script>
+<script type="text/javascript">
+    var newCredit = new Credit('creditName', 'credit', 6, 6, 300);
+    var otherCredit = new Credit('cretitX', 'credit', 10, 12, 1000);
+    var someCredit = new Credit ('cretitY', 'credit', 10, 12, 800);
+
+    var newDeposit = new Deposit('depositName', 'deposit', 6, 12, 1000);
+
+    var Gosho = new Client('Goshko', 'Bulgaria', 1000, 1000);
+    var Pesho = new Client('Peshko', 'Bulgaria', 1500, 1000);
+    var Tosho = new Client('Toshko', 'Bulgaria', 2000, 1200);
+
+    var UniCredit = new Bank ();
+
+    UniCredit.setClients([Gosho, Pesho, Tosho]);
+    UniCredit.setCredits([newCredit, otherCredit, someCredit]);
+
+    UniCredit.releaseCredit(Gosho, newCredit);
+
+    console.log(UniCredit.getClients());
+    console.log(UniCredit.getBankAmount());
+    console.log(Gosho.getCashAmount());
+
+    UniCredit.createDeposit(Pesho, newDeposit);
+
+    console.log(UniCredit.getBankAmount());
+    console.log(Pesho.getCashAmount());
+
+
+
+</script>
+</html>
